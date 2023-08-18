@@ -4,7 +4,6 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const ulEl = document.querySelector(".gallery");
-ulEl.addEventListener("click", onGalleryClick);
 
 const createMarkupGallery = galleryItems
   .map(
@@ -19,14 +18,7 @@ const createMarkupGallery = galleryItems
 
 ulEl.insertAdjacentHTML("beforeend", createMarkupGallery);
 
-function onGalleryClick(evt) {
-  evt.preventDefault();
-
-  if (evt.target.nodeName !== "IMG") {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".ulEl a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-}
+let lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
